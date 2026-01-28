@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>North Thonnes Supply</title>
+
+<style>
+/* ===== RESET ===== */
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ===== BASE ===== */
+body {
+    background:#070707;
+    color:#e5e5e5;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* ===== HEADER ===== */
+header {
+    text-align:center;
+    padding:28px 16px;
+    border-bottom:1px solid #151515;
+}
+
+header h1 {
+    letter-spacing:5px;
+    font-size:32px;
+}
+
+header p {
+    margin-top:8px;
+    font-size:12px;
+    letter-spacing:3px;
+    color:#8f1d1d;
+}
+
+/* ===== NAV ===== */
+nav {
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    padding:18px;
+    border-bottom:1px solid #151515;
+}
+
+nav button {
+    background:#0f0f0f;
+    border:1px solid #1e1e1e;
+    color:#e5e5e5;
+    padding:9px 18px;
+    cursor:pointer;
+    letter-spacing:2px;
+    font-size:12px;
+}
+
+nav button:hover {
+    border-color:#8f1d1d;
+    color:#fff;
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+    padding:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+    gap:18px;
+}
+
+/* ===== IMAGE CARD ===== */
+.gallery img {
+    width:100%;
+    max-height:180px;
+    object-fit:contain;
+    background:#0d0d0d;
+    padding:14px;
+    border:1px solid #1b1b1b;
+    transition:0.3s ease;
+}
+
+.gallery img:hover {
+    border-color:#8f1d1d;
+    transform:scale(1.03);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size:26px;
+    }
+
+    nav {
+        gap:8px;
+    }
+
+    nav button {
+        padding:8px 14px;
+        font-size:11px;
+    }
+
+    .gallery {
+        padding:18px;
+        grid-template-columns:repeat(2, 1fr);
+        gap:14px;
+    }
+
+    .gallery img {
+        max-height:150px;
+        padding:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>NORTH THONNES</h1>
+    <p>DURHAM · ENGLAND · NORDIC SUPPLY</p>
+</header>
+
+<nav>
+    <button onclick="showCategory('card-product')">CARD PRODUCT</button>
+    <button onclick="showCategory('hoodie')">HOODIE</button>
+    <button onclick="showCategory('logo')">LOGO</button>
+    <button onclick="showCategory('polo')">POLO</button>
+    <button onclick="showCategory('tag')">TAG</button>
+</nav>
+
+<div class="gallery" id="gallery"></div>
+
+<script>
+const images = {
+    "card-product": ["1.jpg"],
+    hoodie: ["1.jpg", "2.jpg"],
+    logo: ["1.jpg"],
+    polo: ["1.jpg"],
+    tag: ["1.jpg"]
+};
+
+function showCategory(category) {
+    const gallery = document.getElementById("gallery");
+    gallery.innerHTML = "";
+
+    if (!images[category]) return;
+
+    images[category].forEach(file => {
+        const img = document.createElement("img");
+        img.src = `${category}/${file}`;
+        gallery.appendChild(img);
+    });
+}
+</script>
+
+</body>
+</html>
